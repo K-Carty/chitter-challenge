@@ -13,4 +13,13 @@ describe Peep do
       expect(peep.content).to eq result.first['content']
     end
   end
+
+  describe '#.all' do
+    it 'returns all the peeps in the database' do
+      Peep.create(content: "Peep content", user_id: 1)
+      Peep.create(content: "Peep content 2", user_id: 2)
+      result = Peep.all
+      expect(result.last.content).to eq "Peep content 2" 
+    end
+  end
 end
